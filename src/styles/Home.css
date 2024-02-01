@@ -1,0 +1,23 @@
+/* Home Page  */
+.home-container {
+  display: flex;
+}
+
+.home-aside {
+  width: 715px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 126px;
+}
+
+.home-divider {
+  height: 863px;
+  margin: 0px;
+}
+
+.home-section {
+  width: 1000px;
+  margin-left: 48px;
+}
