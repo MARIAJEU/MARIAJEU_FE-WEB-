@@ -1,13 +1,22 @@
 import React, { useState } from 'react';
-import '../styles.css'; // Tailwind CSS를 import
+import '../styles.css';
+import {
+    DivContainer,
+    PrevButton,
+    CarouselContainer,
+    ItemContainer,
+    ListButtonContainer,
+    ListButton,
+    NextButton,
+} from './carousel.style.jsx';
 
 const Carousel = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const [items, setItems] = useState([
-        { id: 1, backgroundColor: '', content: '', btnColor: 'bg-[#33134B]' },
-        { id: 2, backgroundColor: 'bg-green-500', content: '2', btnColor: 'bg-[#FEFEFE]' },
-        { id: 3, backgroundColor: 'bg-blue-500', content: '3', btnColor: 'bg-[#FEFEFE]' },
+        { id: 1, backgroundColor: '', imgUrl: '', btnColor: '#33134B' },
+        { id: 2, backgroundColor: 'grey', imgUrl: '2', btnColor: '#FEFEFE' },
+        { id: 3, backgroundColor: 'blue', imgUrl: '3', btnColor: '#FEFEFE' },
     ]);
 
     const totalItems = items.length;
@@ -16,66 +25,61 @@ const Carousel = () => {
 
         // 기존 버튼들의 배경색을 초기화
         updatedItems.forEach(item => {
-            item.btnColor = 'bg-[#FEFEFE]';
+            item.btnColor = '#FEFEFE';
         });
 
         // 클릭한 버튼의 배경색을 변경
-        updatedItems[index].btnColor = 'bg-[#33134B]';
+        updatedItems[index].btnColor = '#33134B';
 
         // 상태를 업데이트
         setItems(updatedItems);
 
         setCurrentIndex(index);
-        
     };
 
     const nextSlide = () => {
+        handleClick((currentIndex + 1) % totalItems);
         setCurrentIndex((currentIndex + 1) % totalItems);
     };
 
     const prevSlide = () => {
+        handleClick((currentIndex + 1) % totalItems);
         setCurrentIndex((currentIndex - 1 + totalItems) % totalItems);
     };
 
     return (
-        <div className="w-full bg-[#E6E5E8] h-[31rem] flex justify-center items-center">
-            <button
-                className="transform cursor-pointer text-black bg-white border-none size-9 left-24 rounded-full shadow-[0_2px_10px_0_rgba(0,0,0,0.25)]"
+        <DivContainer>
+            <PrevButton
                 onClick={prevSlide}
             >
                 ❮
-            </button>
-            <div className="relative flex transition-transform duration-500 ease-in-out w-7/12 h-full ml-8 mr-8 items-end overflow-hidden">
+            </PrevButton>
+            <CarouselContainer>
                 {items.map((item, index) => (
-                    <div
-                        key={item.id}
-                        className={`min-w-full box-border ${item.backgroundColor} text-white h-5/6`}
-                        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+                    <ItemContainer
+                    key={item.id}
+                    $backgroundColor={item.backgroundColor}
+                    $currentIndex={currentIndex}
                     >
                         {item.content}
-                    </div>
+                    </ItemContainer>
                 ))}
-                <div className="absolute">
-                    <div className="flex space-x-4">
+                <div style={{ position: "absolute" }}>
+                    <ListButtonContainer>
                         {items.map((item, index) => (
-                            <button
+                            <ListButton
+                                $btnColor={item.btnColor}
                                 key={item.id}
-                                className={`cursor-pointer text-black ${item.btnColor} order-none size-3 mb-4 ml-2 rounded-full`}
-                                onClick={() => handleClick(index)}
-                            >
-                            </button>
+                                onClick={() => handleClick(index)} />
                         ))}
-                    </div>
+                    </ListButtonContainer>
                 </div>
-            </div>
+            </CarouselContainer>
 
-            <button
-                className="transform cursor-pointer text-black bg-white border-none size-9 right-24 rounded-full shadow-[0_2px_10px_0_rgba(0,0,0,0.25)]"
-                onClick={nextSlide}
-            >
+            <NextButton onClick={nextSlide}>
                 ❯
-            </button>
-        </div>
+            </NextButton>
+        </DivContainer>
     );
 };
 
