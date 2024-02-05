@@ -1,6 +1,7 @@
 // HomeRed.js
 import WineProfile from "../components/WineProfile";
 import Food from "../components/Food";
+import ProgressBar from "../components/ProgressBar";
 import foodDummy from "../dummyFiles/foodDummy";
 import "../styles/Home.css";
 
@@ -17,6 +18,7 @@ export default function HomeRed() {
           <Food key={foodData.id} foodDummy={foodData} />
         ))}
       </section>
+      <ProgressBar />
     </div>
   );
 }
