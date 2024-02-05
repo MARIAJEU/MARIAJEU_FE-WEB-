@@ -7,6 +7,7 @@ export default function Home() {
   return (
     <div className="home-container">
       <aside className="home-aside">
+        <h1>This is Home Sparkling</h1>
         <WineProfile />
       </aside>
       <hr className="home-divider" />

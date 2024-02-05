@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import Slider from "./Slider";
 import {
   WineProfileContainer,
   WineProfileTextArea,
@@ -7,12 +8,43 @@ import {
   WineProfileBtnArea,
   WineProfileBtn,
 } from "./WineProfile.style";
-
-import Slider from "./Slider";
-
-const wineTypes = ["RED", "WHITE", "SPARKLING"];
+import { Link, useLocation } from "react-router-dom";
 
 const WineProfile = () => {
+  const { pathname } = useLocation();
+  const [wineProperties, setWineProperties] = useState([]);
+  const [degreeTexts, setDegreeTexts] = useState({});
+
+  useEffect(() => {
+    // 경로에 따라 다른 와인 특성 및 텍스트 설정
+    if (pathname === "/") {
+      // RED 페이지
+      setWineProperties(["BOLD", "TANNIC", "SWEET", "ACIDIC"]);
+      setDegreeTexts({
+        BOLD: ["light", "bold"],
+        TANNIC: ["smooth", "tannic"],
+        SWEET: ["dry", "sweet"],
+        ACIDIC: ["soft", "acidic"],
+      });
+    } else if (pathname.includes("white")) {
+      // WHITE 페이지
+      setWineProperties(["BOLD", "SWEET", "ACIDIC"]);
+      setDegreeTexts({
+        BOLD: ["light", "bold"],
+        SWEET: ["dry", "sweet"],
+        ACIDIC: ["soft", "acidic"],
+      });
+    } else if (pathname.includes("sparkling")) {
+      // SPARKLING 페이지
+      setWineProperties(["BOLD", "ACIDIC", "FIZZY"]);
+      setDegreeTexts({
+        BOLD: ["light", "bold"],
+        ACIDIC: ["soft", "acidic"],
+        FIZZY: ["gentle", "fizzy"],
+      });
+    }
+  }, [pathname]);
+
   return (
     <WineProfileContainer>
       <WineProfileTextArea>
@@ -22,11 +54,29 @@ const WineProfile = () => {
         </WineProfileSubtitle>
       </WineProfileTextArea>
       <WineProfileBtnArea>
-        {wineTypes.map((type) => (
-          <WineProfileBtn>{type}</WineProfileBtn>
-        ))}
+        <Link to="/">
+          <WineProfileBtn className={pathname === "/" ? "active" : ""}>
+            RED
+          </WineProfileBtn>
+        </Link>
+        <Link to="/white">
+          <WineProfileBtn className={pathname === "/white" ? "active" : ""}>
+            WHITE
+          </WineProfileBtn>
+        </Link>
+        <Link to="/sparkling">
+          <WineProfileBtn className={pathname === "/sparkling" ? "active" : ""}>
+            SPARKLING
+          </WineProfileBtn>
+        </Link>
       </WineProfileBtnArea>
-      <Slider />
+      {wineProperties.map((property) => (
+        <Slider
+          key={property}
+          propertyText={property}
+          degreeText={degreeTexts[property]}
+        />
+      ))}
     </WineProfileContainer>
   );
 };

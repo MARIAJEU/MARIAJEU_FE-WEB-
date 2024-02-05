@@ -45,7 +45,8 @@ export const WineProfileBtn = styled.button`
   margin-right: 13.81px;
   margin-top: 46.1px;
   cursor: pointer;
-  &:hover {
+  &:hover,
+  &.active {
     background: #4e286b;
     color: #ffffff;
   }

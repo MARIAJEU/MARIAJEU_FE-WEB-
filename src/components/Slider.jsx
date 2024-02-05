@@ -8,19 +8,17 @@ import {
   PropertyText,
   DegreeText,
   SliderContainer,
+  DegreeTextContainer,
 } from "./Slider.style";
 
-const Slider = () => {
-  // State Variables
+const Slider = ({ propertyText, degreeText }) => {
   const [selectedIdx, setSelectedIdx] = useState(null);
 
-  // Slider Handler
   const handleSliderItemClick = (index) => {
     setSelectedIdx(index);
     console.log(index + 1);
   };
 
-  // Slider Items
   const renderSliderItems = () => {
     const sliderItems = [];
     for (let i = 0; i < 6; i++) {
@@ -39,12 +37,16 @@ const Slider = () => {
     <WineProfileSlideContainer>
       <PropertyContainer>
         <InfoBtn>i</InfoBtn>
-        <PropertyText>BOLD</PropertyText>
+        <PropertyText>{propertyText}</PropertyText>
       </PropertyContainer>
       <SliderContainer>
-        <DegreeText>light</DegreeText>
+        <DegreeTextContainer>
+          <DegreeText>{degreeText[0]}</DegreeText>
+        </DegreeTextContainer>
         <ItemContainer>{renderSliderItems()}</ItemContainer>
-        <DegreeText>bold</DegreeText>
+        <DegreeTextContainer>
+          <DegreeText>{degreeText[1]}</DegreeText>
+        </DegreeTextContainer>
       </SliderContainer>
     </WineProfileSlideContainer>
   );
