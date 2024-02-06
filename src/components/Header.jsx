@@ -13,7 +13,8 @@ import {
   LogoName,
   SearchBar,
   SearchImg,
-  NotifyIcon,
+  NotifyIconWrapper,
+  NotifyIconImg,
   NotifyModal,
   Divider,
   LogStatus,
@@ -73,12 +74,12 @@ const Header = () => {
             onChange={(e) => setSearchTerm(e.target.value)}
             onKeyDown={handleKeyPress}
           />
-          <NotifyIcon
-            src={notifyIcon}
-            alt="Notify"
+          <NotifyIconWrapper
             onMouseEnter={() => setIsNotifyModalOpen(true)}
             onMouseLeave={() => setIsNotifyModalOpen(false)}
-          />
+          >
+            <NotifyIconImg src={notifyIcon} alt="Notify" />
+          </NotifyIconWrapper>
           {isNotifyModalOpen && (
             <NotifyModal>
               <h2>Notification</h2>

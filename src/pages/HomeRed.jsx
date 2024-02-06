@@ -9,7 +9,6 @@ export default function HomeRed() {
   return (
     <div className="home-container">
       <aside className="home-aside">
-        <h1>This is Home Red</h1>
         <WineProfile />
       </aside>
       <hr className="home-divider" />

@@ -8,7 +8,6 @@ export default function HomeWhite() {
   return (
     <div className="home-container">
       <aside className="home-aside">
-        <h1>This is Home White</h1>
         <WineProfile />
       </aside>
       <hr className="home-divider" />

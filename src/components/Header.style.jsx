@@ -109,19 +109,30 @@ export const SearchImg = styled.img`
 `;
 
 // NotifyIcon Section
-export const NotifyIcon = styled.img`
+export const NotifyIconWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-left: 500px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  padding: 13px;
+  overflow: hidden;
+  padding: 10px;
   cursor: pointer;
   &:hover {
     background-color: #7b539940;
   }
 `;
 
+export const NotifyIconImg = styled.img`
+  width: 28.5px;
+  height: 33.25px;
+`;
+
 export const NotifyModal = styled.div`
   position: absolute;
-  top: 130px;
+  top: 140px;
   left: 70%;
   transform: translate(-50%, -50%);
   background-color: white;

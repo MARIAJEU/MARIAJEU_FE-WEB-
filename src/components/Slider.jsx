@@ -9,10 +9,12 @@ import {
   DegreeText,
   SliderContainer,
   DegreeTextContainer,
+  MoreInfoModal,
 } from "./Slider.style";
 
 const Slider = ({ propertyText, degreeText }) => {
   const [selectedIdx, setSelectedIdx] = useState(null);
+  const [isMoreInfoModalOpen, setisMoreInfoModalOpen] = useState(false);
 
   const handleSliderItemClick = (index) => {
     setSelectedIdx(index);
@@ -36,8 +38,21 @@ const Slider = ({ propertyText, degreeText }) => {
   return (
     <WineProfileSlideContainer>
       <PropertyContainer>
-        <InfoBtn>i</InfoBtn>
+        <InfoBtn
+          onMouseEnter={() => setisMoreInfoModalOpen(true)}
+          onMouseLeave={() => setisMoreInfoModalOpen(false)}
+        >
+          i
+        </InfoBtn>
         <PropertyText>{propertyText}</PropertyText>
+        {isMoreInfoModalOpen && (
+          <MoreInfoModal>
+            <p>
+              향이 뚜렷하고 쉽게 와인의 맛을 감별할 수 있는 맛. 높을수록
+              Bold하며, 낮을수록 Light합니다.
+            </p>
+          </MoreInfoModal>
+        )}
       </PropertyContainer>
       <SliderContainer>
         <DegreeTextContainer>

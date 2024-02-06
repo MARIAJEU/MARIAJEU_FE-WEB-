@@ -16,6 +16,7 @@ export const ItemContainer = styled.div`
 export const PropertyContainer = styled.div`
   display: flex;
   align-items: center;
+  position: relative;
 `;
 
 export const InfoBtn = styled.button`
@@ -28,6 +29,21 @@ export const InfoBtn = styled.button`
   height: 14.607px;
   cursor: pointer;
   margin-right: 5px;
+`;
+
+export const MoreInfoModal = styled.div`
+  width: 386px;
+  height: 63.53px;
+  top: 110px;
+  left: 200px;
+  border-radius: 8.85px;
+  border: 0.8px solid #33134b;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 10px;
+  z-index: 1000;
+  opacity: 0.9;
 `;
 
 export const PropertyText = styled.span`
