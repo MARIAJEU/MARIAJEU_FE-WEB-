@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const NavbarContainer = styled.div`
   z-index: 5;
@@ -16,7 +17,7 @@ const NavbarContainer = styled.div`
   background-color: black;
 `;
 
-const LogoContainer = styled.div`
+const LogoContainer = styled(Link)`
   display: flex;
   justify-content: left;
   align-items: center;
@@ -24,6 +25,7 @@ const LogoContainer = styled.div`
   height: 100%;
   height: inherit;
   background-color: inherit;
+  text-decoration: none;
 `;
 
 const BtnContainer = styled.div`
@@ -57,19 +59,21 @@ const AlarmImg = styled.img`
   height: 1.6rem;
 `;
 
-const StyledBtn = styled.button`
+const StyledLink = styled(Link)`
   background-color: ${(props) => props.bgColor};
   padding: 0.6rem 1.8rem 0.6rem 1.8rem;
   border-radius: 0.5rem;
   border: 0;
-  width: 10rem;
-  height: 2.2rem;
+  width: 8rem;
+  height: 1.4rem;
   color: ${(props) => props.color};
+  text-decoration: none;
+  text-align: center;
 `;
 export default function LandingNavbar() {
   return (
     <NavbarContainer>
-      <LogoContainer>
+      <LogoContainer to="/">
         <LogoImg
           alt="로고"
           src={`${process.env.PUBLIC_URL}/img/로고.svg`}
@@ -81,16 +85,16 @@ export default function LandingNavbar() {
           alt="알람"
           src={`${process.env.PUBLIC_URL}/img/mdi_bell.svg`}
         ></AlarmImg>
-        <StyledBtn bgColor={"transparent"} color={"white"}>
+        <StyledLink to="/signin" bgColor={"transparent"} color={"white"}>
           로그인하기
-        </StyledBtn>
-        <StyledBtn
+        </StyledLink>
+        <StyledLink
           bgColor={"white"}
           color={"black"}
           style={{ marginRight: "4rem" }}
         >
           앱으로 시작하기
-        </StyledBtn>
+        </StyledLink>
       </BtnContainer>
     </NavbarContainer>
   );

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   position: relative;
@@ -24,7 +25,7 @@ const Heading = styled.h1`
   transition: 0.2s linear;
 `;
 
-const Link = styled.a`
+const SignUpStyledLink = styled(Link)`
   text-decoration: none;
   font-size: 0.6rem;
   color: #ffffff;
@@ -266,16 +267,13 @@ const SignIn = () => {
           <button className="signin__btn">로그인하기</button>
         </Form>
         <div style={{ display: "flex" }}>
-          <Link href="#" id="signup" style={{ marginLeft: "20px" }}>
+          <SignUpStyledLink to="/pwhelp" style={{ marginLeft: "20px" }}>
             비밀번호를 잊어버리셨나요?
-          </Link>
+          </SignUpStyledLink>
         </div>
         <Separator></Separator>
         <p style={{ color: "white", fontSize: "0.6rem" }}>
-          계정이 없나요?{" "}
-          <Link href="#" id="signup">
-            가입
-          </Link>
+          계정이 없나요? <SignUpStyledLink to="/signup">가입</SignUpStyledLink>
           하세요.
         </p>
       </Container>

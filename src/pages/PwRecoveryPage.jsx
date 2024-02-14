@@ -1,7 +1,7 @@
 import React from "react";
-import SignIn from "../components/SignIn";
 import LandingNavbar from "../components/LandingNavbar";
 import styled from "styled-components";
+import PwRecovery from "../components/PwRecovery";
 
 const AppContaioner = styled.div`
   display: flex;
@@ -13,11 +13,11 @@ const AppContaioner = styled.div`
   overflow-y: hidden;
 `;
 
-export default function SignInPage() {
+export default function PwRecoveryPage() {
   return (
     <AppContaioner>
       <LandingNavbar></LandingNavbar>
-      <SignIn></SignIn>
+      <PwRecovery></PwRecovery>
     </AppContaioner>
   );
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import SignIn from "../components/SignIn";
+import SignUp from "../components/SignUp";
 import LandingNavbar from "../components/LandingNavbar";
 import styled from "styled-components";
 
@@ -9,15 +9,13 @@ const AppContaioner = styled.div`
   align-items: center;
   justify-content: center;
   background-color: black;
-  height: 100vh;
-  overflow-y: hidden;
 `;
 
-export default function SignInPage() {
+export default function SignUpPage() {
   return (
     <AppContaioner>
       <LandingNavbar></LandingNavbar>
-      <SignIn></SignIn>
+      <SignUp></SignUp>
     </AppContaioner>
   );
 }
