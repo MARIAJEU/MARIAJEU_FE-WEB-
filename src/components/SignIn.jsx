@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import axios from "axios";
 import styled from "styled-components";
+import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 
@@ -180,6 +180,66 @@ const SignIn = () => {
   const togglePasswordVisibility = () => {
     setIsPasswordVisible(!isPasswordVisible);
   };
+
+  const handleSignIn = async (e) => {
+    e.preventDefault();
+
+    const userName = document.getElementById("userName").value;
+    const password = document.getElementById("password").value;
+
+    const userData = {
+      userName: userName,
+      password: password,
+    };
+
+    try {
+      const response = await axios.post(
+        "http://43.202.194.137:8080/users/login",
+        userData
+      );
+
+      localStorage.setItem("accessToken", response.data.accessToken);
+      if (document.getElementById("maintainSignIn").checked) {
+        document.cookie = `longLivedToken=${
+          response.data.accessToken
+        }; max-age=${365 * 24 * 60 * 60}; path=/;`;
+      }
+
+      // 응답 로그
+      console.log("응답:", response.data);
+      alert("로그인이 완료되었습니다!");
+    } catch (error) {
+      // 에러를 처리
+      if (error.response) {
+        console.error("응답 에러:", error.response.data);
+      } else if (error.request) {
+        console.error("응답 없음:", error.request);
+      } else {
+        console.error("요청 설정 에러:", error.message);
+        alert(error.message);
+      }
+    }
+  };
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const savedId = getCookie("savedId");
+    if (savedId) {
+      document.getElementById("userName").value = savedId;
+    }
+  });
+
+  // 쿠키에서 특정 이름의 쿠키 값을 가져오는 함수
+  function getCookie(cookieName) {
+    const cookies = document.cookie.split(";");
+    for (const cookie of cookies) {
+      const [name, value] = cookie.trim().split("=");
+      if (name === cookieName) {
+        return decodeURIComponent(value);
+      }
+    }
+    return null;
+  }
+
   return (
     <>
       <Container>
@@ -192,7 +252,7 @@ const SignIn = () => {
           카카오계정 LOGIN
         </KakaoButton>
         <Separator></Separator>
-        <Form action="" method="post">
+        <Form onSubmit={handleSignIn}>
           <div className="input__block signup-input__block">
             <FontAwesomeIcon
               icon="fa-solid fa-user"
@@ -206,7 +266,8 @@ const SignIn = () => {
               type="id"
               placeholder="사용자 ID를 입력해 주세요."
               className="input"
-              id="id"
+              id="userName"
+              name="userName"
             />
           </div>
           <div className="input__block">
@@ -223,7 +284,7 @@ const SignIn = () => {
               type={isPasswordVisible ? "text" : "password"}
               name="password"
               placeholder="비밀번호를 입력해 주세요."
-              id="pwd"
+              id="password"
               autoComplete="off"
             />
             <span onClick={togglePasswordVisibility}>
@@ -252,20 +313,22 @@ const SignIn = () => {
               id="maintianSignIn"
             ></StyledCheckBox>
             <label
-              for="maintianSignIn"
+              htmlFor="maintianSignIn"
               style={{ color: "white", marginRight: "16px" }}
             >
               로그인 상태 유지
             </label>
 
             <StyledCheckBox type="checkbox" id="saveId"></StyledCheckBox>
-            <label for="saveId" style={{ color: "white" }}>
+            <label htmlFor="saveId" style={{ color: "white" }}>
               ID 기억하기
             </label>
           </CheckBoxContainer>
 
           <Separator></Separator>
-          <button className="signin__btn">로그인하기</button>
+          <button type="submit" className="signin__btn">
+            로그인하기
+          </button>
         </Form>
         <div style={{ display: "flex" }}>
           <SignUpStyledLink to="/pwhelp" style={{ marginLeft: "20px" }}>
