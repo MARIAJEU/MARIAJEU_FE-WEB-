@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
@@ -9,7 +10,7 @@ const Container = styled.div`
   z-index: 1;
   display: block;
   max-width: 400px;
-  padding-top: 100px;
+  padding-top: 12rem;
   height: 100vh;
   width: 60%;
   background-color: transparent;

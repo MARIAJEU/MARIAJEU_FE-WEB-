@@ -2,9 +2,24 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 const dataList = [
-  { id: 1, name: "chk1", text: "[필수] 마리아주 이용약관", isChk: false },
-  { id: 2, name: "chk2", text: "[필수] 개인정보 수집에 동의", isChk: false },
-  { id: 3, name: "chk3", text: "[선택] 이벤트 혜택 정보 수신", isChk: false },
+  {
+    id: 1,
+    name: "agreedToTerms1",
+    text: "[필수] 마리아주 이용약관",
+    isChk: false,
+  },
+  {
+    id: 2,
+    name: "agreedToTerms2",
+    text: "[필수] 개인정보 수집에 동의",
+    isChk: false,
+  },
+  {
+    id: 3,
+    name: "agreedToOptionalTerms",
+    text: "[선택] 이벤트 혜택 정보 수신",
+    isChk: false,
+  },
 ];
 
 const InfoContainer = styled.div`

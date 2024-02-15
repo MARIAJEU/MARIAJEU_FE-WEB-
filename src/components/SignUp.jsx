@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import axios from "axios";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import ConsentPersonalInfo from "./ConsentPersonalInfo";
+
 const Container = styled.div`
   z-index: 1;
   display: block;
@@ -180,10 +182,95 @@ const AuthButton = styled.button`
 
 const SignUp = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [email, setEmail] = useState("");
+  const [responseAuthNum, setResponseAuthNum] = useState("");
 
   const togglePasswordVisibility = () => {
     setIsPasswordVisible(!isPasswordVisible);
   };
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+  const handleAuthNumChange = (e) => {
+    setResponseAuthNum(e.target.value);
+  };
+
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+    const userData = {};
+
+    formData.forEach((value, key) => {
+      userData[key] = value;
+    });
+
+    try {
+      const response = await axios.post(
+        "http://43.202.194.137:8080/users/join",
+        userData
+      );
+
+      // 응답 로그
+      console.log("응답:", response.data);
+      alert("회원가입이 완료되었습니다!");
+    } catch (error) {
+      // 에러를 처리
+      if (error.response) {
+        console.error("응답 에러:", error.response.data);
+      } else if (error.request) {
+        console.error("응답 없음:", error.request);
+      } else {
+        console.error("요청 설정 에러:", error.message);
+      }
+    }
+  };
+
+  const handleMailSend = async (e) => {
+    try {
+      const response = await axios.post(
+        "http://43.202.194.137:8080/mail/Send",
+        {
+          email: email,
+        }
+      );
+      console.log("Response:", response.data);
+    } catch (error) {
+      // Handle errors
+      if (error.response) {
+        console.error("응답 에러:", error.response.data);
+      } else if (error.request) {
+        console.error("응답 없음:", error.request);
+      } else {
+        console.error("요청 설정 에러:", error.message);
+      }
+    }
+  };
+
+  const handleAuthCheck = async (e) => {
+    try {
+      const response = await axios.post(
+        "http://43.202.194.137:8080/mail/Send",
+        {
+          email: email,
+          authNum: responseAuthNum,
+        }
+      );
+
+      console.log("Response:", response.data);
+    } catch (error) {
+      // Handle errors
+      if (error.response) {
+        console.error("응답 에러:", error.response.data);
+      } else if (error.request) {
+        console.error("응답 없음:", error.request);
+      } else {
+        console.error("요청 설정 에러:", error.message);
+      }
+    }
+  };
+
   return (
     <>
       <Container>
@@ -196,14 +283,15 @@ const SignUp = () => {
           카카오계정 LOGIN
         </KakaoButton>
         <Separator></Separator>
-        <Form action="" method="post">
+        <Form onSubmit={handleSignUp}>
           <div className="input__block">
             <p>사용자 ID</p>
             <input
               type="text"
               placeholder="4 ~ 12자"
               className="input"
-              id="id"
+              id="userName"
+              name="userName"
             />
           </div>
           <div className="input__block">
@@ -213,7 +301,7 @@ const SignUp = () => {
                 type={isPasswordVisible ? "text" : "password"}
                 name="password"
                 placeholder="8 ~ 16자리 / 영문, 숫자, 특수문자 조합"
-                id="pwd"
+                id="password"
                 autoComplete="off"
               />
               <span onClick={togglePasswordVisibility}>
@@ -243,7 +331,8 @@ const SignUp = () => {
               type="text"
               placeholder="이름을 입력해 주세요."
               className="input"
-              id="userName"
+              id="name"
+              name="name"
             />
           </div>
           <div className="input__block">
@@ -252,7 +341,8 @@ const SignUp = () => {
               type="date"
               placeholder="YYYYMMDD"
               className="input"
-              id="id"
+              id="birth"
+              name="birth"
             />
           </div>
           <div className="hf-input__block">
@@ -263,10 +353,12 @@ const SignUp = () => {
                 placeholder="이메일을 입력해 주세요."
                 className="input"
                 id="email"
+                name="email"
+                onChange={handleEmailChange}
               />
             </div>
 
-            <AuthButton>
+            <AuthButton onClick={handleMailSend}>
               인증<br></br>요청
             </AuthButton>
           </div>
@@ -276,16 +368,20 @@ const SignUp = () => {
               <input
                 type="text"
                 className="input"
-                placeholder="O O O O"
+                placeholder="O O O O O O"
                 id="authNum"
+                name="authNum"
+                onChange={handleAuthNumChange}
               />
             </div>
 
-            <AuthButton>확인</AuthButton>
+            <AuthButton onClick={handleAuthCheck}>확인</AuthButton>
           </div>
           <ConsentPersonalInfo></ConsentPersonalInfo>
           <Separator></Separator>
-          <button className="signin__btn">로그인하기</button>
+          <button type="submit" className="signin__btn">
+            로그인하기
+          </button>
         </Form>
       </Container>
     </>
