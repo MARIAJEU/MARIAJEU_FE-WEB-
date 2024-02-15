@@ -3,23 +3,23 @@ import styled from "styled-components";
 
 const SideProgressBarContainer = styled.div`
   position: fixed;
-  top: 195px;
-  left: 1883px;
-  height: 865px;
-  width: 15px;
-  border-radius: 7.5px;
+  right: 30px;
+  height: 70vh;
+  width: 11.719px;
+  border-radius: 5.859px;
   background-color: #ddd;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  margin: 30px 0;
 `;
 
 const Progress = styled.div`
-  width: 15px;
+  width: 11.719px;
   background-color: #4e286b;
   transition: height 0.3s ease;
   height: ${(props) => props.scrollPercentage}%;
-  border-radius: 7.5px;
+  border-radius: 5.859px;
 `;
 
 const SideProgressBar = () => {

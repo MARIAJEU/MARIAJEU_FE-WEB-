@@ -5,7 +5,7 @@ export const WineProfileSlideContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding: 0;
-  margin-top: 46.16px;
+  margin-top: 35.922px; /* 46.16px를 1280px 기준으로 조정 */
 `;
 
 export const ItemContainer = styled.div`
@@ -24,65 +24,69 @@ export const InfoBtn = styled.button`
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  border: 1px solid #4e286b;
-  width: 14.607px;
-  height: 14.607px;
+  border: 0.867px solid #4e286b; /* 1px를 1280px 기준으로 조정 */
+  width: 15px;
+  height: 15px;
   cursor: pointer;
-  margin-right: 5px;
+  margin-right: 3.906px; /* 5px를 1280px 기준으로 조정 */
 `;
 
 export const MoreInfoModal = styled.div`
-  width: 386px;
-  height: 63.53px;
-  top: 110px;
-  left: 200px;
-  border-radius: 8.85px;
-  border: 0.8px solid #33134b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 301.375px; /* 386px를 1280px 기준으로 조정 */
+  height: 49.57px; /* 63.53px를 1280px 기준으로 조정 */
+  top: 87.109px; /* 110px를 1280px 기준으로 조정 */
+  left: 156.25px; /* 200px를 1280px 기준으로 조정 */
+  border-radius: 6.914px; /* 8.85px를 1280px 기준으로 조정 */
+  border: 0.625px solid #33134b; /* 0.8px를 1280px 기준으로 조정 */
   position: absolute;
   transform: translate(-50%, -50%);
   background-color: white;
-  padding: 10px;
+  padding: 5px;
   z-index: 1000;
   opacity: 0.9;
+  font-size: 12px;
 `;
 
 export const PropertyText = styled.span`
   color: #4e286b;
-  font-size: 17.827px;
+  font-size: 14.023px; /* 17.827px를 1280px 기준으로 조정 */
   font-weight: 600;
 `;
 
 export const SliderContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-top: 7px;
+  margin-top: 5.469px; /* 7px를 1280px 기준으로 조정 */
 `;
 
 export const DegreeTextContainer = styled.div`
   display: flex;
-  width: 60px;
+  width: 46.875px;
   align-items: center;
   justify-content: center;
 `;
 
 export const DegreeText = styled.span`
   color: #4e286b;
-  font-size: 14.146px;
+  font-size: 11.102px; /* 14.146px를 1280px 기준으로 조정 */
 `;
 
 export const WineProfileSlideItem = styled.div`
-  width: 46px;
-  height: 11px;
+  width: 35.938px;
+  height: 8.789px;
   background-color: ${(props) => (props.selected ? "#EED9FF;" : "#FFF")};
   cursor: pointer;
-  border: 1px solid #4e286b;
+  border: 0.867px solid #4e286b;
 
   &:first-child {
-    border-radius: 5px 0 0 5px;
+    border-radius: 4.492px 0 0 4.492px;
   }
 
   &:last-child {
-    border-radius: 0 5px 5px 0;
-    border-right: 1px solid #4e286b;
+    border-radius: 0 4.492px 4.492px 0;
+    border-right: 0.867px solid #4e286b;
   }
 `;

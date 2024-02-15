@@ -31,7 +31,7 @@ import {
 
 const Food = ({ foodDummy }) => {
   // State Variables
-  const [isLiked, setIsLiked] = useState(false); //
+  const [isLiked, setIsLiked] = useState(false);
 
   // Handlers
   const handleLikeClick = () => {
