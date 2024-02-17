@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import LandingBody from "../components/LandingBody";
 import LandingNavbar from "../components/LandingNavbar";
+import LandingFooter from "../components/LandingFooter";
 
 const AppContaioner = styled.div`
   display: flex;

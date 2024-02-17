@@ -30,6 +30,7 @@ const InfoContainer = styled.div`
   border-radius: 20px;
   background-color: white;
   overflow: hidden;
+  padding: 1rem 0 1rem 0;
 `;
 
 const InfoCheckBoxWrapper = styled.div`
@@ -42,21 +43,25 @@ const InfoCheckBoxWrapper = styled.div`
 
 const ConsentPersonalInfo = () => {
   const [data, setData] = useState(dataList);
+
   const changeInput = (e) => {
     const { name, checked } = e.target;
+    const value =
+      checked || e.target.type === "checkbox" ? checked : e.target.value;
+
     if (name === "all") {
       setData(
         data.map((item) => {
           return {
             ...item,
-            isChk: checked,
+            isChk: value,
           };
         })
       );
     } else {
       setData(
         data.map((item) =>
-          item.name === name ? { ...item, isChk: checked } : item
+          item.name === name ? { ...item, isChk: value === "on" } : item
         )
       );
     }

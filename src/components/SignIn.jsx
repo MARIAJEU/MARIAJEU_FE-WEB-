@@ -180,7 +180,9 @@ const SignIn = () => {
   const togglePasswordVisibility = () => {
     setIsPasswordVisible(!isPasswordVisible);
   };
-
+  const handleKakaoButtonClicked = () => {
+    alert("기능개발중입니다.");
+  };
   const handleSignIn = async (e) => {
     e.preventDefault();
 
@@ -244,7 +246,7 @@ const SignIn = () => {
     <>
       <Container>
         <Heading>로그인하기</Heading>
-        <KakaoButton>
+        <KakaoButton onClick={handleKakaoButtonClicked}>
           <FontAwesomeIcon
             icon={["fas", "comment"]} // 아이콘의 속성을 배열로 전달합니다.
             style={{ marginRight: "5px" }} // 스타일 객체를 올바르게 생성합니다.

@@ -185,6 +185,10 @@ const AuthButton = styled.button`
 `;
 
 const PwRecovery = () => {
+  const [email, setEmail] = useState("");
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
   return (
     <>
       <Container>
@@ -205,6 +209,8 @@ const PwRecovery = () => {
                 placeholder="이메일을 입력해주세요."
                 className="input"
                 id="email"
+                name="email"
+                onChange={handleEmailChange}
               />
             </div>
 
@@ -218,7 +224,7 @@ const PwRecovery = () => {
               <input
                 type="text"
                 className="input"
-                placeholder="O O O O"
+                placeholder="O O O O O O"
                 id="authNum"
               />
             </div>

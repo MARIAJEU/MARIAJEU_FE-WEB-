@@ -39,7 +39,7 @@ const BtnContainer = styled.div`
 `;
 
 const LogoImg = styled.img`
-  margin-left: 3rem;
+  margin-left: 3vw;
   width: 2rem;
   height: 3rem;
 `;
@@ -55,20 +55,24 @@ const LogoText = styled.span`
 `;
 
 const AlarmImg = styled.img`
-  width: 1.6rem;
-  height: 1.6rem;
+  width: 4vw;
+  height: 4vh;
 `;
 
 const StyledLink = styled(Link)`
-  background-color: ${(props) => props.bgColor};
-  padding: 0.6rem 1.8rem 0.6rem 1.8rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  background-color: ${(props) => props.bgcolor};
+  padding: 0.6vw 1.8vw 0.6vw 1.8vw;
   border-radius: 0.5rem;
   border: 0;
   width: 8rem;
   height: 1.4rem;
   color: ${(props) => props.color};
+  font-size: 1.1vw;
   text-decoration: none;
-  text-align: center;
 `;
 export default function LandingNavbar() {
   return (
@@ -85,11 +89,11 @@ export default function LandingNavbar() {
           alt="알람"
           src={`${process.env.PUBLIC_URL}/img/mdi_bell.svg`}
         ></AlarmImg>
-        <StyledLink to="/signin" bgColor={"transparent"} color={"white"}>
+        <StyledLink to="/signin" bgcolor={"transparent"} color={"white"}>
           로그인하기
         </StyledLink>
         <StyledLink
-          bgColor={"white"}
+          bgcolor={"white"}
           color={"black"}
           style={{ marginRight: "4rem" }}
         >

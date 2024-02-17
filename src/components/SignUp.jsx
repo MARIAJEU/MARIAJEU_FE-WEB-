@@ -10,7 +10,7 @@ const Container = styled.div`
   display: block;
   max-width: 400px;
   padding-top: 100px;
-  height: 130vh;
+  height: 150vh;
   width: 60%;
   background-color: transparent;
 `;
@@ -200,16 +200,29 @@ const SignUp = () => {
     e.preventDefault();
 
     const formData = new FormData(e.target);
-    const userData = {};
+    const userData = {
+      role: "USER",
+      agreedToTerms1: false,
+      agreedToTerms2: false,
+      agreedToOptionalTerms: false,
+    };
 
     formData.forEach((value, key) => {
-      userData[key] = value;
+      if (key !== "all") {
+        userData[key] = value === "on" ? true : value;
+      }
     });
 
+    console.log(userData);
     try {
       const response = await axios.post(
         "http://43.202.194.137:8080/users/join",
-        userData
+        userData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
       );
 
       // 응답 로그
@@ -336,13 +349,23 @@ const SignUp = () => {
             />
           </div>
           <div className="input__block">
-            <p>생년월일</p>
+            <p>닉네임</p>
             <input
-              type="date"
-              placeholder="YYYYMMDD"
+              type="text"
+              placeholder="닉네임"
               className="input"
-              id="birth"
-              name="birth"
+              id="nickName"
+              name="nickName"
+            />
+          </div>
+          <div className="input__block">
+            <p>전화번호</p>
+            <input
+              type="text"
+              placeholder="01012345678"
+              className="input"
+              id="phoneNumber"
+              name="phoneNumber"
             />
           </div>
           <div className="hf-input__block">
