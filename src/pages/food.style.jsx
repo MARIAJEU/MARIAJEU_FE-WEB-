@@ -40,6 +40,7 @@ export const Title = styled.p`
 
 export const EnglishName = styled.p`
     margin: 0;
+    margin-bottom: 5px;
     font-family: Inter;
     font-size: 1.2rem;
     font-weight: normal;
