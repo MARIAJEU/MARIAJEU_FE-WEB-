@@ -20,13 +20,13 @@ export default function LandingFooter() {
   return (
     <FooterContainer>
       <div>
-        <styledFooterLink>이용약관</styledFooterLink>
-        <styledFooterLink>개인정보처리방침</styledFooterLink>
-        <styledFooterLink>소개</styledFooterLink>
+        <styledFooterLink to="#">이용약관</styledFooterLink>
+        <styledFooterLink to="#">개인정보처리방침</styledFooterLink>
+        <styledFooterLink to="#">소개</styledFooterLink>
       </div>
       <div>
-        <styledFooterLink>앱으로 시작하기</styledFooterLink>
-        <styledFooterLink>로그인</styledFooterLink>
+        <styledFooterLink to="#">앱으로 시작하기</styledFooterLink>
+        <styledFooterLink to="/signin">로그인</styledFooterLink>
       </div>
       <styledFooterTextBox>
         MARIAJEU는 고객들을 위한 술안주 추천 서비스이며, 매장과의 연결을 통해

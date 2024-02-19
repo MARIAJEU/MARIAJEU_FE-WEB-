@@ -17,6 +17,7 @@ export default function LandingPage() {
     <AppContaioner>
       <LandingNavbar></LandingNavbar>
       <LandingBody></LandingBody>
+      <LandingFooter></LandingFooter>
     </AppContaioner>
   );
 }
