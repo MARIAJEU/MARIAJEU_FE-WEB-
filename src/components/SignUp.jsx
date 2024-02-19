@@ -3,6 +3,7 @@ import axios from "axios";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ConsentPersonalInfo from "./ConsentPersonalInfo";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   z-index: 1;
@@ -183,7 +184,7 @@ const SignUp = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [email, setEmail] = useState("");
   const [responseAuthNum, setResponseAuthNum] = useState("");
-
+  const navigate = useNavigate();
   const togglePasswordVisibility = () => {
     setIsPasswordVisible(!isPasswordVisible);
   };
@@ -227,6 +228,7 @@ const SignUp = () => {
       // 응답 로그
       console.log("응답:", response.data);
       alert("회원가입이 완료되었습니다!");
+      navigate("/signin");
     } catch (error) {
       // 에러를 처리
       if (error.response) {
@@ -300,7 +302,7 @@ const SignUp = () => {
             <p>사용자 ID</p>
             <input
               type="text"
-              placeholder="4 ~ 12자"
+              placeholder="5 ~ 12자"
               className="input"
               id="userName"
               name="userName"

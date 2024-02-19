@@ -5,46 +5,73 @@ import { Link } from "react-router-dom";
 const FooterContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   width: 100vw;
-  height: 3rem;
+  height: 18rem;
   padding: 1rem;
   background-color: #e6e5e8;
 `;
 
-const styledFooterLink = styled(Link)``;
+const FooterInnerContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+`;
 
-const styledFooterTextBox = styled.div``;
+const FooterColumnContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+`;
+
+const StyledFooterLink = styled(Link)`
+  border-right: solid black 1px;
+  text-decoration: none;
+  padding: 0 1rem 0 1rem;
+  color: black;
+`;
 
 export default function LandingFooter() {
   return (
     <FooterContainer>
-      <div>
-        <styledFooterLink to="#">이용약관</styledFooterLink>
-        <styledFooterLink to="#">개인정보처리방침</styledFooterLink>
-        <styledFooterLink to="#">소개</styledFooterLink>
-      </div>
-      <div>
-        <styledFooterLink to="#">앱으로 시작하기</styledFooterLink>
-        <styledFooterLink to="/signin">로그인</styledFooterLink>
-      </div>
-      <styledFooterTextBox>
-        MARIAJEU는 고객들을 위한 술안주 추천 서비스이며, 매장과의 연결을 통해
-        편의를 제공하고 있습니다.
-      </styledFooterTextBox>
-      <styledFooterTextBox>MARIAJEU 사업자 정보</styledFooterTextBox>
-      <div>
+      <FooterInnerContainer>
+        <StyledFooterLink to="#">이용약관</StyledFooterLink>
+        <StyledFooterLink to="#">개인정보처리방침</StyledFooterLink>
+        <StyledFooterLink to="#">소개</StyledFooterLink>
+      </FooterInnerContainer>
+      <FooterInnerContainer>
+        <StyledFooterLink to="#">앱으로 시작하기</StyledFooterLink>
+        <StyledFooterLink to="/signin">로그인</StyledFooterLink>
+      </FooterInnerContainer>
+
+      <FooterInnerContainer>
         <div>
-          <span>대표</span>이명건
+          MARIAJEU는 고객들을 위한 술안주 추천 서비스이며, 매장과의 연결을 통해
+          편의를 제공하고 있습니다.
         </div>
+      </FooterInnerContainer>
+
+      <FooterColumnContainer>
+        <div>MARIAJEU 사업자 정보</div>
         <div>
-          <span>Tel.</span>010-4070-2430
+          <StyledFooterLink to="#">
+            <span>대표</span>이명건
+          </StyledFooterLink>
+          <StyledFooterLink to="#">
+            <span>Tel.</span>010-4070-2430
+          </StyledFooterLink>
         </div>
-      </div>
-      <div>
-        <styledFooterTextBox>MARIAJEU</styledFooterTextBox>
+      </FooterColumnContainer>
+
+      <FooterColumnContainer>
+        <div>MARIAJEU</div>
         <div>Copyright @MARIAJEU</div>
-      </div>
+      </FooterColumnContainer>
     </FooterContainer>
   );
 }

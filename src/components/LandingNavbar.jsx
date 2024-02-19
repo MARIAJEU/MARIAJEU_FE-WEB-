@@ -39,7 +39,7 @@ const BtnContainer = styled.div`
 `;
 
 const LogoImg = styled.img`
-  margin-left: 3vw;
+  margin: 3vw;
   width: 2rem;
   height: 3rem;
 `;
@@ -77,7 +77,7 @@ const StyledLink = styled(Link)`
 export default function LandingNavbar() {
   return (
     <NavbarContainer>
-      <LogoContainer to="/">
+      <LogoContainer to="/landing-page">
         <LogoImg
           alt="로고"
           src={`${process.env.PUBLIC_URL}/img/로고.svg`}

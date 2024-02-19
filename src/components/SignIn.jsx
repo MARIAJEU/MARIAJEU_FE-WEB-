@@ -14,6 +14,9 @@ const Container = styled.div`
   height: 100vh;
   width: 60%;
   background-color: transparent;
+  p {
+    margin-left: 8rem;
+  }
 `;
 
 const Heading = styled.h1`
