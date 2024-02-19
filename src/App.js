@@ -11,6 +11,7 @@ import LandingPage from "./pages/LandingPage";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
 import PwRecoveryPage from "./pages/PwRecoveryPage";
+import Food from "./components/Food";
 
 function App() {
   return (
@@ -23,7 +24,8 @@ function App() {
         <Route path="/community" element={<Community />} />
         <Route path="/customer-center" element={<CustomerCenter />} />
         <Route path="/my-page" element={<MyPage />} />
-        <Route path="/landingPage" element={<LandingPage></LandingPage>} />
+        <Route path="/food" element={<Food />} />
+        <Route path="/landing-page" element={<LandingPage></LandingPage>} />
         <Route path="/signin" element={<SignInPage></SignInPage>} />
         <Route path="/signup" element={<SignUpPage></SignUpPage>} />
         <Route path="/pwhelp" element={<PwRecoveryPage></PwRecoveryPage>} />
